@@ -6,10 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 </head>
 
 <body>
+    <h1>亂數</h1>
+    <hr/>
+    <script></script>
+    <p style="display:block;border:1px solid red;height:25px;width:60px;border-radius:3px;"> </p>
+    <input type="button" onclick="launch()" value="Click" style="font-size:13px;border-radius:3px;border:1px solid #777;background-color:#fff;">
+    <script>
+        function launch() {
+            d3.select('p').text(random(1911, 2016));
+        }
+
+        function random(N, M) {
+            Math.floor(Math.random() * (M - N + 1) + N);
+        };
+    </script>
+    <h1>五線譜</h1>
+    <script>
+        var draw = d3.select("body").append("svg").attr({
+            'width': 300,
+            'height': 200,
+            'id': 'draw',
+        });
+        draw.append('rect').attr({
+            x: 0,
+            y: 0,
+            width: 300,
+            height: 200,
+            fill: '#FDF5E6',
+        })
+        for (var i = 0; i < 5; i++) {
+            draw.append('line').attr({
+                x1: 0,
+                y1: 50 + 20 * i,
+                x2: 300,
+                y2: 50 + 20 * i,
+                stroke: '#111',
+            });
+        }
+        draw.append('circle').attr({
+            cx: 150,
+            cy: 100,
+            r: 10,
+        });
+        draw.append('rect').attr({
+            x: 156,
+            y: 50,
+            width: 4,
+            height: 50,
+            fill: 'black'
+        });
+        draw.append('text').attr({
+            x: 140,
+            y: 155,
+            'font-size': 30,
+        }).text('A');
+    </script>
+    <hr />
+    <h1>SVG長條圖</h1>
+    <hr />
     <script>
         var svg = d3.select("body").append("svg").attr({
             'width': 500,
