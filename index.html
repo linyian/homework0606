@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var svg = d3.select("body").append("svg").attr({
+            'width': 500,
+            'height': 500,
+            'id': 'svg',
+        });
+        for (var i = 0; i < 20; i++) {
+            var num = random(20, 300);
+            svg.append('rect').attr({
+                x: 10,
+                y: 10 + 12 * i,
+                width: num,
+                height: 10,
+                fill: 'red',
+            });
+            svg.append('text').attr({
+                fill: 'black',
+                'font-size': 12,
+                y: 20 + 12 * i,
+                x: num + 15,
+            }).text(num);
+        };
+
+
+
+        function random(N, M) {
+            return Math.floor(Math.random() * (M - N + 1) + N);
+        }
+    </script>
+</body>
+
+</html>
