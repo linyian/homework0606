@@ -96,9 +96,48 @@
         function random(N, M) {
             return Math.floor(Math.random() * (M - N + 1) + N);
         }
+
     </script>
     <h1>SVG折線圖</h1>
+    <script>
+        var poly = d3.select("body").append("svg").attr({
+            "id": "poly",
+            "height": 400,
+            width: 500
+        });
+
+        var points = "5,5 "
+        for (var i = 0; i < 20; i++) {
+            var num = random(20, 300);
+            points = points + (5 + num) + "," + (5 + 16 * (i + 1)) + "  ";
+
+            poly.append('circle').attr({
+                cx: 5 + num,
+                cy: 5 + 16 * (i + 1),
+                r: 2,
+                fill: "red",
+            });
+            poly.append('text').attr({
+                fill: 'black',
+                'font-size': 12,
+                x: num + 15,
+                y: 25 + 16 * i,
+            }).text(num);
+
+        };
+        points = points + "5," + (5 + 16 * 21);
+
+        function random(N, M) {
+            return Math.floor(Math.random() * (M - N + 1) + N);
+        };
+        console.log(points);
+        poly.append('polyline').attr({
+            points: points,
+            stroke: "#666",
+            fill: "transparent",
         })
+
+    </script>
     <hr />
 </body>
 
